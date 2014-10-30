@@ -6,13 +6,13 @@ module UsdaNutrientDatabase
 
       def find_or_initialize(row)
         UsdaNutrientDatabase::Nutrient.
-          find_or_initialize_by(nutrient_number: row[0])
+          find_or_initialize_by(id: row[0])
       end
 
       def columns
         @columns ||= [
-          :nutrient_number, :units, :tagname, :nutrient_description,
-          :number_decimal_places, :sort_record_order
+          :id, :units, :tagname, :description,
+          :frac_digits, :sortorder
         ]
       end
 

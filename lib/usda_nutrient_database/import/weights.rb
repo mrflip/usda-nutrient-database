@@ -6,8 +6,9 @@ module UsdaNutrientDatabase
 
       def find_or_initialize(row)
         UsdaNutrientDatabase::Weight.find_or_initialize_by(
-          nutrient_databank_number: row[0],
-          sequence_number: row[1]
+          id:      (row[0].to_i * 100 + row[1].to_i),
+          food_id: row[0],
+          seq:     row[1]
         )
       end
 
@@ -17,9 +18,9 @@ module UsdaNutrientDatabase
 
       def columns
         @columns ||= [
-          :nutrient_databank_number, :sequence_number, :amount,
-          :measurement_description, :gram_weight, :num_data_points,
-          :standard_deviation
+          :food_id, :seq, :amount,
+          :description, :gram_weight, :num_data_points,
+          :stddev
         ]
       end
 

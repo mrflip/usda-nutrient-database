@@ -1,19 +1,19 @@
 module UsdaNutrientDatabase
   module Import
-    class SourceCodes < Base
+    class Sources < Base
 
       private
 
       def find_or_initialize(row)
-        UsdaNutrientDatabase::SourceCode.find_or_initialize_by(code: row[0])
+        UsdaNutrientDatabase::Source.find_or_initialize_by(id: row[0])
       end
 
       def columns
-        [:code, :description]
+        [:id, :description]
       end
 
       def log_import_started
-        UsdaNutrientDatabase.log 'Source code import started'
+        UsdaNutrientDatabase.log 'Source import started'
       end
 
       def filename

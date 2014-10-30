@@ -6,8 +6,9 @@ module UsdaNutrientDatabase
 
       def find_or_initialize(row)
         UsdaNutrientDatabase::Footnote.find_or_initialize_by(
-          nutrient_databank_number: row[0], footnote_number: row[1],
-          nutrient_number: row[2]
+          food_id:     row[0],
+          seq:         row[1],
+          nutrient_id: row[3]
         )
       end
 
@@ -17,8 +18,7 @@ module UsdaNutrientDatabase
 
       def columns
         @columns ||= [
-          :nutrient_databank_number, :footnote_number, :footnote_type,
-          :nutrient_number, :footnote_text
+          :food_id, :seq, :kind, :nutrient_id, :body
         ]
       end
 

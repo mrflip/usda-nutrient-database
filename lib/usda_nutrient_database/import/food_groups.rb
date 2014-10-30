@@ -5,11 +5,11 @@ module UsdaNutrientDatabase
       private
 
       def find_or_initialize(row)
-        UsdaNutrientDatabase::FoodGroup.find_or_initialize_by(code: row[0])
+        UsdaNutrientDatabase::FoodGroup.find_or_initialize_by(id: row[0])
       end
 
       def columns
-        @columns ||= %w(code description)
+        @columns ||= %w(id description)
       end
 
       def filename

@@ -1,15 +1,17 @@
 class CreateUsdaFoods < ActiveRecord::Migration
   def change
-    create_table :usda_foods, id: false, primary_key: :nutrient_databank_number do |t|
-      t.string  :nutrient_databank_number, null: false, index: true
-      t.string  :food_group_code, index: true
-      t.string  :long_description, null: false
-      t.string  :short_description, null: false
+    create_table :usda_foods do |t|
+      # :id
+      t.integer :food_group_id,  index: true
+      #
+      t.string  :desc_full,      null: false
+      t.string  :desc_abbr,      null: false
       t.string  :common_names
-      t.string  :manufacturer_name
+      #
+      t.string  :manufacturer,   index: true
       t.boolean :survey
-      t.string  :refuse_description
-      t.integer :percentage_refuse
+      t.string  :refuse_desc
+      t.integer :refuse_pct
       t.float   :nitrogen_factor
       t.float   :protein_factor
       t.float   :fat_factor
